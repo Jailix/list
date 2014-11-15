@@ -1,0 +1,32 @@
+
+<html lang="en">
+<head>
+   <script type="text/javascript">
+
+    $('a[href^="http://"]').each(function() {
+
+ var textoEnlace = $(this).text();
+
+ var enlaceExterno = $(this).attr('href');
+
+ biblioText += '<li><strong>' + textoEnlace + ":</strong> " +
+
+  enlaceExterno + '</li>\n';
+
+});
+    </script>
+    <meta charset="UTF-8">
+    <title>lista</title>
+</head>
+<body>
+    <div id="biblio">
+
+<h2>Relación de páginas referenciadas en este artículo</h2>
+
+ <ul id=biblioLista>
+
+</ul>
+
+</div>
+</body>
+</html>
