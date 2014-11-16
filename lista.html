@@ -1,32 +1,55 @@
-
 <html lang="en">
 <head>
+<!--Aquí pongo el formato para que me lea los acentos y las letras estañas-->
+ <meta charset="utf-8">
+ <!--Importo la libreria de jquery para relalizar el ejercio-->
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
    <script type="text/javascript">
-
-    $('a[href^="http://"]').each(function() {
-
- var textoEnlace = $(this).text();
-
- var enlaceExterno = $(this).attr('href');
-
- biblioText += '<li><strong>' + textoEnlace + ":</strong> " +
-
-  enlaceExterno + '</li>\n';
-
+       //Llamo a la función cuando se inicia la página
+$(document).ready(function(){
+    //creo la variable bibliotext para ir introduciendo  el los enlaces
+    biblioText="<h1>Estos son los enlaces de la página</h1>";
+    // entra en el caso que tenga la página un "a" y tenga un href con "http://" al pincipio del link
+    $('a[href^="http://"]').each(function() {// esto crea un buche que busca todas las "a" y que cumplan la condicion
+        // aquí cojo el valor de texto que tiene la etiqueta "a" y despues el cojo el atributo y lo meto en otra varible
+        var textoEnlace = $(this).text();
+        var enlaceExterno = $(this).attr('href');
+        //le meto todos los enlaces en con su texto en biblioText
+        biblioText += '<li><strong>' + textoEnlace + ":</strong> " +
+        enlaceExterno + '</li>\n';
 });
+    // el if esta en el caso que no tenga ningun enlace en caso del else entra cuando tiene enlaces la página
+    if(biblioText=="<h1>Estos son los enlaces de la página</h1>"){
+        //sustituye el contenido del id biblio por lo que esta igualado
+        document.getElementById("biblio").innerHTML = "<h1>No tenemos ningun enlace en la página</h1>";
+    }else{
+        // En el caso que tenga elaces la ponemos una lista en al id de bibliolista
+        document.getElementById("biblioLista").innerHTML = biblioText;
+    }
+});
+
     </script>
     <meta charset="UTF-8">
-    <title>lista</title>
+    <title>lista de enlaces</title>
 </head>
 <body>
+    <!--Entra aquí en al caso que tenga el js desactivado-->
+     <noscript>
+        <p>Bienvenido a Mi Sitio</p>
+          <p>La página que estás viendo requiere para su funcionamiento el uso de JavaScript.
+        Si lo has deshabilitado intencionadamente, por favor vuelve a activarlo.</p>
+    </noscript>
     <div id="biblio">
-
-<h2>Relación de páginas referenciadas en este artículo</h2>
-
- <ul id=biblioLista>
-dfwfawfewfer
-</ul>
-
-</div>
+    </div>
+    <!--Creo la lista de enlaces en el caso que tenga el js activado-->
+        <script type="text/javascript">
+            // le meto los enlaces y al "ul" en caso de tener el js activado
+            document.getElementById("biblio").innerHTML=("<h1>Enlaces</h1><a href='http://www.ieselrincon.org'>Ieelrincon</a>\
+        <a href='http://es-es.facebook.com/'>Facebook</a>\
+        <a href='http://twitter.com/?lang=es'>Twitter</a>\
+        <a href='http://www.google.es/webhp?tab=ww&ei=e69oVP3BEMXwaNHHgagJ&ved=0CAYQ1S4'>Google</a>\
+        <ul id='biblioLista'>\
+        </ul>");
+        </script>
 </body>
 </html>
